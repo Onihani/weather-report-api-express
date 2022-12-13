@@ -1,0 +1,128 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/incidents": {
+      "post": {
+        "operationId": "IncidentsController_addIncident",
+        "summary": "Report an incident",
+        "description": "Via this endpoint a client can report an incident",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddIncidentInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operation Sucessful"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Incidents"
+        ]
+      },
+      "get": {
+        "operationId": "IncidentsController_getIncidents",
+        "summary": "Get all reported incidents",
+        "description": "Via this endpoint a client can get all reported incidents in a paginated format",
+        "parameters": [
+          {
+            "name": "take",
+            "required": false,
+            "in": "query",
+            "description": "Number of items/incidents to return per request",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "skip",
+            "required": false,
+            "in": "query",
+            "description": "Number of items/incidents to skip per request",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Sucessful"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "tags": [
+          "Incidents"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Weather Report API Documentation",
+    "description": "This documentation includes API description of restful endpoints in the weather report API",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "AddIncidentInput": {
+        "type": "object",
+        "properties": {
+          "client_id": {
+            "type": "number",
+            "description": "Id of client reporting incident"
+          },
+          "incident_desc": {
+            "type": "string",
+            "description": "Description of incident"
+          },
+          "city": {
+            "type": "string",
+            "description": "City where incident occurred",
+            "example": "Accra"
+          },
+          "country": {
+            "type": "string",
+            "description": "Country where incident occurred",
+            "example": "GH"
+          }
+        },
+        "required": [
+          "client_id",
+          "incident_desc",
+          "city",
+          "country"
+        ]
+      }
+    }
+  }
+}
