@@ -22,7 +22,7 @@ npm install
 ### 2. Adding Environment Variables
 Create a `.env` file in the project's roots directory
 In the ```.env``` file add your `DATABASE_URL` and `OPEN_WEATHER_MAPS_API_KEY` variables
-An example of how the env `.env` file should look like can be found in the [`.env.exmaple`](./.env.example) file in the projects root
+An example of how the env `.env` file should look like can be found in the [`.env.example`](./.env.example) file in the projects root
 
 ### 3. Create/Initialize the Database with Tables/Models
 
